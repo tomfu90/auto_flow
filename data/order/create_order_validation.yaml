@@ -1,0 +1,137 @@
+test_cases:
+  - name: "创建订单04_失败_必填没填：金额"
+    input:
+      product_id: "AB"
+      amount: null
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 400
+      error: "Invalid amount"
+
+  - name: "创建订单05_失败_必填没填：商品id"
+    input:
+      product_id: null
+      amount: 100
+      order_type: "WITHDRAW"
+    expected:
+      status_code: 400
+      error: "Invalid product_id"
+
+  - name: "创建订单06_失败_金额校验：金额非数字"
+    input:
+      product_id: "AB"
+      amount: "AB12"
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 400
+      error: "Invalid amount"
+
+  - name: "创建订单07_失败_金额校验：金额小于0"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: -1
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 422
+      error: "金额不能小于0"
+
+  - name: "创建订单08_失败_金额校验：金额=0"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: 0
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 422
+      error: "金额不能小于0"
+
+  - name: "创建订单09_失败_金额校验：金额小数位数大于2"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: 100.123
+      order_type: "WITHDRAW"
+    expected:
+      status_code: 422
+      error: "金额最多只能有2位小数"
+
+  - name: "创建订单10_失败_金额校验：金额大于10万"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: 100001
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 422
+      error: "金额不能超过100000"
+
+  - name: "创建订单11_失败_金额校验：支付订单金额大于账户余额"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: 6000
+      order_type: "PAYMENT"
+    expected:
+      status_code: 422
+      error: "当前订单金额超过账户余额"
+
+  - name: "创建订单12_失败_金额校验：提款订单金额大于账户余额"
+    input:
+      product_id: "AB"
+      "currency": "CNY"
+      amount: 7000
+      order_type: "WITHDRAW"
+    expected:
+      status_code: 422
+      error: "当前订单金额超过账户余额"
+
+  - name: "创建订单13_失败_币种格式错误：非cny，非usd"
+    input:
+      product_id: "AB"
+      "currency": "CNY1"
+      amount: 1000
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 400
+      error: "currency格式输入错误"
+
+  - name: "创建订单14_失败_商品id长度不正确：小于2位->1位"
+    input:
+      product_id: "A"
+      "currency": "CNY"
+      amount: 100
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 422
+      error: "product_id长度要在2-8之间"
+
+  - name: "创建订单15_失败_商品id长度不正确：大于于8位->9位"
+    input:
+      product_id: "AB12345341"
+      "currency": "CNY"
+      amount: 100
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 422
+      error: "product_id长度要在2-8之间"
+
+  - name: "创建订单16_失败_订单类型为空"
+    input:
+      product_id: "AB12345"
+      "currency": "CNY"
+      amount: 100
+      order_type: null
+    expected:
+      status_code: 400
+      error: "Invalid order_type"
+
+  - name: "创建订单17_失败_订单类型错误"
+    input:
+      product_id: "AB12345"
+      "currency": "CNY"
+      amount: 100
+      order_type: "DEPOSIT1"
+    expected:
+      status_code: 400
+      error: "order_type格式输入错误"

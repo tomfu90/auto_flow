@@ -1,0 +1,31 @@
+test_cases:
+  - name: "创建订单01_充值订单成功_币种不传，商品id2位"
+    input:
+      product_id: "AB"
+      amount: 100
+      order_type: "DEPOSIT"
+    expected:
+      status_code: 201
+      amount: 100
+
+  - name: "创建订单02_提款订单成功_币种传cny，商品id8位"
+    input:
+      product_id: "AB123456"
+      amount: 100
+      currency: "CNY"
+      order_type: "WITHDRAW"
+    expected:
+      status_code: 201
+      amount: 100
+
+  - name: "创建订单03_支付订单成功_币种传usd，商品id4位"
+    input:
+      product_id: "AB123"
+      amount: 100.05
+      currency: "USD"
+      order_type: "PAYMENT"
+    expected:
+      status_code: 201
+      amount: 100.05
+
+

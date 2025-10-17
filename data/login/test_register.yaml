@@ -1,0 +1,109 @@
+success_register:
+  - name: "注册用例01：注册成功"
+    input:
+      username: "{{random_username}}"
+      password: "abc12345"
+      confirm_password: "abc12345"
+    expected:
+      status_code: 200
+      message: "注册成功"
+
+fail_register:
+  - name: "注册用例02：用户名为空，注册失败"
+    input:
+      username: null
+      password: "abc12345"
+      confirm_password: "abc12345"
+    expected:
+      status_code: 400
+      error: "账号或密码不能为空"
+
+  - name: "注册用例03：密码为空注册失败"
+    input:
+      username: "fufu"
+      password: null
+      confirm_password: "abc12345"
+    expected:
+      status_code: 400
+      error: "账号或密码不能为空"
+
+  - name: "注册用例04：确认密码为空注册失败"
+    input:
+      username: "fufu"
+      password: "abc12345"
+      confirm_password: null
+    expected:
+      status_code: 400
+      error: "账号或密码不能为空"
+
+  - name: "注册用例05：账号格式错误"
+    input:
+      username: "fufu@@"
+      password: "abc12345"
+      confirm_password: "abc12345"
+    expected:
+      status_code: 403
+      error: "账号只能由数字+字母组成"
+
+  - name: "注册用例06：账号长度错误：小于最小：2"
+    input:
+      username: "f"
+      password: "abc12345"
+      confirm_password: "abc12345"
+    expected:
+      status_code: 403
+      error: "账号长度不在2-10之间"
+
+  - name: "注册用例07：账号长度错误：大于最大：10"
+    input:
+      username: "fufu1234567"
+      password: "abc12345"
+      confirm_password: "abc12345"
+    expected:
+      status_code: 403
+      error: "账号长度不在2-10之间"
+
+  - name: "注册用例08：密码格式错误"
+    input:
+      username: "abc12"
+      password: "abc12345@@"
+      confirm_password: "abc12345@@"
+    expected:
+      status_code: 403
+      error: "密码只能由数字+字母+下划线组成"
+
+  - name: "注册用例09：密码长度错误：小于最小"
+    input:
+      username: "abd123"
+      password: "abd11"
+      confirm_password: "abd11"
+    expected:
+      status_code: 403
+      error: "密码长度不在6-16之间"
+
+  - name: "注册用例10：密码长度错误：大于最大"
+    input:
+      username: "abc123"
+      password: "abc12012345678901"
+      confirm_password: "abc12012345678901"
+    expected:
+      status_code: 403
+      error: "密码长度不在6-16之间"
+
+  - name: "注册用例11：密码和确认密码不相同"
+    input:
+      username: "abf123"
+      password: "abc1201"
+      confirm_password: "abc1202"
+    expected:
+      status_code: 403
+      error: "密码和确认密码不一致"
+
+  - name: "注册用例12：重复注册"
+    input:
+      username: "tester"
+      password: "abc1201"
+      confirm_password: "abc1201"
+    expected:
+      status_code: 403
+      error: "账号已注册，请勿重复注册"

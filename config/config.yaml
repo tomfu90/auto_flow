@@ -1,0 +1,16 @@
+# 当前使用的环境（dev/prod）
+env: dev
+
+#不同环境配置
+environments:
+  dev:
+    base_url: http://127.0.0.1:5000
+    login_url: /api/login
+    get_balance_url: /api/account/balance
+    get_transactions_url: /api/account/transactions
+    #动态传参：{order_id}
+    get_order_url: /api/orders/{order_id}
+    create_api_orders_url: /api/orders
+    upload_file_url: /api/upload
+    list_uploads_url: /api/GetUploads
+    register_url: /api/register

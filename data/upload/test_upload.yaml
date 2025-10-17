@@ -1,0 +1,32 @@
+success_cases:
+  - name: "01_上传图片成功"
+    input:
+      file: "data/upload/data/test_success.png"
+    expected:
+      status_code: 200
+      message: "文件上传成功"
+
+fail_cases:
+  - name: "02上传失败_没有文件"
+    input:
+      file: null
+    expected:
+      status_code: 400
+      error: "No file"
+
+  - name: "03上传失败_上传文件格式不符合要求"
+    input:
+      file: "data/upload/data/test_txt.txt"
+    expected:
+      status_code: 400
+      error: "上传图片格式错误，支持的格式：'jpg','jpeg','png'"
+
+  - name: "04上传失败_上传文件大小超过100k"
+    input:
+      file: "data/upload/data/great_than_100k.jpg"
+    expected:
+      status_code: 403
+      error: "上传文件大小超过最大限制:100k"
+
+
+

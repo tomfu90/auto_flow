@@ -1,0 +1,58 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+ENV/
+.env
+.venv
+env/
+venv.bak/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.pyre/
+# local debug/tem test file
+tests/demo.py
+tests/tmp_*.py
+tests/__pycache__/
+
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Local config (IMPORTANT: never commit secrets!)
+.env
+.env.local
+config/local.py
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Allure reports and results
+allure-report/
+allure-results/
+
+# Mock server uploads (test files)
+mock_server/uploads/
+
+# Flask instance directory (runtime data)
+instance/
