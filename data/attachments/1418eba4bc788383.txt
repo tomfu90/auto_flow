@@ -1,0 +1,12 @@
+URL: http://127.0.0.1:5000/api/login
+Method: POST
+Headers: {
+  "User-Agent": "python-requests/2.32.5",
+  "Accept-Encoding": "gzip, deflate",
+  "Accept": "*/*",
+  "Connection": "keep-alive"
+}
+Body:{
+  "username": "tester",
+  "password": "SecurePass123!"
+}

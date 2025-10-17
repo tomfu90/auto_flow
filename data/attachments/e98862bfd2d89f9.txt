@@ -1,0 +1,14 @@
+URL: http://127.0.0.1:5000/api/orders
+Method: POST
+Headers: {
+  "User-Agent": "python-requests/2.32.5",
+  "Accept-Encoding": "gzip, deflate",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Authorization": "Bearer 8f64fcea-8ba8-498a-a8b6-2eb17d5e1d70"
+}
+Body:{
+  "product_id": "AB",
+  "amount": 100,
+  "order_type": "DEPOSIT"
+}
