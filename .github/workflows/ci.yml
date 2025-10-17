@@ -61,7 +61,7 @@ jobs:
         if: success()  # 只有测试通过才部署
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ DEPLOY_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./allure-report
 
