@@ -1,6 +1,6 @@
 # auto_flow - 自动化 API 测试框架
 
-> 作者：fufu  
+> 作者：fufu（long哥 2025下半年在线求职测试工作呀🐶） 
 > 一个基于 Python + Flask + Pytest 的全栈自动化测试框架，支持接口 + 数据库断言、动态参数、多用户并发、Allure 报告、日志追踪与 **Git 集成测试**。
 
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue) 
