@@ -24,11 +24,21 @@ jobs:
           pip install -r requirements.txt
           pip install allure-pytest 
 
-      - name: Setup Allure CLI
-        uses: mikepenz/allure-report-action@v2
+      # ✅ 替换失效的 mikepenz action
+      - name: Set up Java for Allure
+        uses: actions/setup-java@v4
         with:
-          allure-version: '2.29.0'  # 可选
+          java-version: '17'
+          distribution: 'temurin'
 
+      - name: Install Allure CLI
+        run: |
+          ALLURE_VERSION=2.29.0
+          wget https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -xzf allure-${ALLURE_VERSION}.tgz
+          sudo mv allure-${ALLURE_VERSION} /opt/allure
+          echo "/opt/allure/bin" >> $GITHUB_PATH   
+      
 
       - name: Run tests
         env:
