@@ -1,0 +1,10 @@
+{
+  "amount": 100.0,
+  "created_at": "2025-10-17 12:36:50",
+  "currency": "CNY",
+  "order_id": "ORD4B1307AF",
+  "order_type": "WITHDRAW",
+  "product_id": "AB123456",
+  "status": "CREATED",
+  "username": "tester"
+}
