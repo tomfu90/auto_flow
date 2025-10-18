@@ -1,0 +1,10 @@
+URL: http://127.0.0.1:5000/api/upload
+Method: POST
+Headers: {
+  "User-Agent": "python-requests/2.32.5",
+  "Accept-Encoding": "gzip, deflate",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Authorization": "Bearer 2f6873a9-cd76-4c03-9639-32b44ec509be"
+}
+Body:None

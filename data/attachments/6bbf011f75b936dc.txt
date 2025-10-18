@@ -1,0 +1,10 @@
+URL: http://127.0.0.1:5000/api/account/balance
+Method: GET
+Headers: {
+  "User-Agent": "python-requests/2.32.5",
+  "Accept-Encoding": "gzip, deflate",
+  "Accept": "*/*",
+  "Connection": "keep-alive",
+  "Authorization": "Bearer 4737653b-4357-42d9-a976-853fa715f774"
+}
+Body:None
